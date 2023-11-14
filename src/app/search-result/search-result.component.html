@@ -1,1 +1,8 @@
-<p class="bg-danger">search-result works!</p>
+<div class="card mx-2" style="width: 18rem;">
+  <img [src]="result?.thumbnailUrl" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{result?.title}}</h5>
+    <p class="card-text">{{ result?.description}}</p>
+    <a [href]="result?.videoUrl" class="btn btn-primary">{{ result?.videoUrl}}</a>
+  </div>
+</div>

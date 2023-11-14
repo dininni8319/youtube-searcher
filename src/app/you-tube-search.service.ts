@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment.development";
 import { SearchResultModel } from "./searchresult.model";
@@ -14,20 +14,18 @@ export const YOUTUBE_API_URL = environment.apiUrl
 export class YouTubeSearchService {
   constructor(
     private http: HttpClient,
-    @Inject(YOUTUBE_API_KEY) private apiKey: string,
-    @Inject(YOUTUBE_API_URL) private apiUrl: string
   ) {}
 
   search(query: string): Observable<SearchResultModel[]>{
     const params: string  = [
       `q=${query}`,
-      `key=${this.apiKey}`,
+      `key=${YOUTUBE_API_KEY}`,
       `part=snippet`,
       `type=video`,
       `maxResults=10`
     ].join('&')
     
-    const queryUrl = `${this.apiUrl}?${params}`
+    const queryUrl = `${YOUTUBE_API_URL}?${params}`
     return this.http.get(queryUrl).pipe(
       map((response: any) => {
         return <any>response['items'].map((item: any) => {
