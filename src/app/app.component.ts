@@ -8,6 +8,6 @@ import { environment } from 'src/environments/environment.development';
 export class AppComponent {
  
   constructor() {
-    console.log(environment.apiUrl);
+    console.log('test');
   }
 }
